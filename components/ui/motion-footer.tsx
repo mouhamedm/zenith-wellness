@@ -330,14 +330,13 @@ export function CinematicFooter() {
 
           <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
-              &copy; 2026 Centre Zenith Bien-etre. Tous droits reserves.
+              &copy; {new Date().getFullYear()} Centre Zenith Bien-etre. Tous droits reserves.
             </div>
 
             <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-border/50">
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Cree avec</span>
+              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Developpe par</span>
               <span className="animate-footer-heartbeat text-sm md:text-base text-destructive">❤</span>
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">par</span>
-              <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">MMD Studio</span>
+              <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">MMD.Dev</span>
             </div>
 
             <MagneticButton

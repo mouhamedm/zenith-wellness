@@ -164,3 +164,65 @@
   .fan-layout { height: 22rem; }
   .fan-card { width: 6.5rem; height: 9.5rem; border-radius: 0.4rem; }
 }
+
+/* ── Glass Pill Button (shared) ─────────────────────────────────────────── */
+/* Replique le footer-glass-pill pour pouvoir l'utiliser hors du footer.     */
+.glass-pill-btn {
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklch, var(--foreground) 3%, transparent) 0%,
+    color-mix(in oklch, var(--foreground) 1%, transparent) 100%
+  );
+  box-shadow:
+    0 10px 30px -10px color-mix(in oklch, var(--background) 50%, transparent),
+    inset 0 1px 1px color-mix(in oklch, var(--foreground) 10%, transparent),
+    inset 0 -1px 2px color-mix(in oklch, var(--background) 80%, transparent);
+  border: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--foreground);
+}
+
+.glass-pill-btn:hover {
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklch, var(--foreground) 8%, transparent) 0%,
+    color-mix(in oklch, var(--foreground) 2%, transparent) 100%
+  );
+  border-color: color-mix(in oklch, var(--foreground) 20%, transparent);
+  box-shadow:
+    0 20px 40px -10px color-mix(in oklch, var(--background) 70%, transparent),
+    inset 0 1px 1px color-mix(in oklch, var(--foreground) 20%, transparent);
+  color: var(--foreground);
+}
+
+/* ── Custom Cursor ──────────────────────────────────────────────────────── */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 9998;
+  will-change: transform;
+}
+
+/* Masque le curseur natif quand le custom cursor est actif */
+body.custom-cursor-active {
+  cursor: none !important;
+}
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active [role="button"],
+body.custom-cursor-active input,
+body.custom-cursor-active label {
+  cursor: none !important;
+}

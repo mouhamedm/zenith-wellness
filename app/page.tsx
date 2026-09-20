@@ -2,6 +2,8 @@ import StackSpread from "@/components/ui/stack-spread";
 import SocialCards from "@/components/ui/card-fan-carousel";
 import FlowArt, { FlowSection } from "@/components/ui/story-scroll";
 import { CinematicFooter } from "@/components/ui/motion-footer";
+import SiteHeader from "@/components/ui/site-header";
+import SectionReveal from "@/components/ui/section-reveal";
 
 const WELLNESS_CARDS = [
   { imgUrl: "/images/wellness/fan1.jpg",  alt: "Relaxation et massage profond" },
@@ -20,20 +22,54 @@ export default function Home() {
   return (
     <div className="relative w-full bg-background">
 
+      {/* HEADER — non sticky, flotte sur le hero */}
+      <SiteHeader />
+
       {/* HERO */}
       <StackSpread bgColor="#f5f3ef" textColor="#1a1a1a" scrollLength={220} />
 
       {/* SECTION 2 : Fan Carousel */}
-      <section className="relative z-10 bg-background w-full py-24 md:py-32">
-        <div className="max-w-4xl mx-auto text-center px-6 mb-12 md:mb-16">
-          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-muted-foreground mb-4">Notre univers</p>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground leading-none mb-6">
-            Explorez Nos <span className="text-foreground/40">Espaces</span>
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Des espaces soigneusement concus pour votre detente et votre regeneration. Chaque soin, chaque moment, une experience unique.
-          </p>
-        </div>
+      <section id="espaces" className="relative z-10 bg-background w-full py-24 md:py-32">
+        <SectionReveal>
+          <div className="max-w-4xl mx-auto text-center px-6 mb-12 md:mb-16 overflow-hidden">
+            {/* Eyebrow — glisse depuis la gauche */}
+            <p
+              data-reveal="label"
+              className="text-xs font-semibold tracking-[0.3em] uppercase text-muted-foreground mb-4"
+            >
+              Notre univers
+            </p>
+
+            {/* Titre — chaque mot se revele avec un masque */}
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground leading-none mb-6 overflow-hidden">
+              {["Explorez", "Nos", "Espaces"].map((word, i) => (
+                <span
+                  key={word}
+                  className="inline-block mr-[0.25em]"
+                  style={{ overflow: "hidden" }}
+                >
+                  <span
+                    data-reveal="word"
+                    className={`inline-block${
+                      i === 2 ? " text-foreground/40" : ""
+                    }`}
+                  >
+                    {word}
+                  </span>
+                </span>
+              ))}
+            </h2>
+
+            {/* Sous-titre — fade + monte */}
+            <p
+              data-reveal="sub"
+              className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            >
+              Des espaces soigneusement concus pour votre detente et votre
+              regeneration. Chaque soin, chaque moment, une experience unique.
+            </p>
+          </div>
+        </SectionReveal>
         <SocialCards cards={WELLNESS_CARDS} />
       </section>
 
@@ -64,7 +100,7 @@ export default function Home() {
           </div>
           <hr className="my-[2vw] border-t border-white/30" />
           <p className="max-w-[50ch] text-[clamp(1rem,2.5vw,2rem)] font-normal leading-relaxed opacity-90">
-            Une approche globale qui unit les soins du corps, la clarte mentale et l'equilibre emotionnel.
+            Une approche globale qui unit les soins du corps, la clarte mentale et l&apos;equilibre emotionnel.
           </p>
           <hr className="my-[2vw] border-t border-white/30" />
           <div className="flex flex-wrap gap-[3vw]">
@@ -85,7 +121,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-[3vw]">
             <div className="min-w-[180px] flex-1">
               <p className="mb-2 text-sm font-bold uppercase tracking-wider">Nutritherapie</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Consultations personnalisees avec nos nutritherapeutes pour accompagner votre vitalite de l'interieur.</p>
+              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Consultations personnalisees avec nos nutritherapeutes pour accompagner votre vitalite de l&apos;interieur.</p>
             </div>
             <div className="min-w-[180px] flex-1">
               <p className="mb-2 text-sm font-bold uppercase tracking-wider">Aquatherapie</p>
@@ -108,7 +144,7 @@ export default function Home() {
           </div>
           <hr className="my-[2vw] border-t border-black/20" />
           <p className="max-w-[50ch] text-[clamp(1rem,2.5vw,2rem)] font-normal leading-relaxed opacity-80">
-            Un rituel d'accueil pense pour que vous vous sentiez chez vous des les premiers instants.
+            Un rituel d&apos;accueil pense pour que vous vous sentiez chez vous des les premiers instants.
           </p>
           <hr className="my-[2vw] border-t border-black/20" />
           <div className="flex flex-wrap gap-[3vw]">
@@ -133,7 +169,7 @@ export default function Home() {
             </div>
             <div className="min-w-[180px] flex-1">
               <p className="mb-2 text-sm font-bold uppercase tracking-wider">05 — Conseils</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Recommandations personnalisees pour maintenir l'equilibre entre chaque visite.</p>
+              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Recommandations personnalisees pour maintenir l&apos;equilibre entre chaque visite.</p>
             </div>
             <div className="min-w-[180px] flex-1">
               <p className="mb-2 text-sm font-bold uppercase tracking-wider">06 — Suivi</p>
@@ -166,7 +202,7 @@ export default function Home() {
             </div>
             <div className="min-w-[180px] flex-1">
               <p className="mb-2 text-sm font-bold uppercase tracking-wider">100% naturel</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Produits certifies bio, sans parabenes, respectueux de l'environnement et de votre peau.</p>
+              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-60">Produits certifies bio, sans parabenes, respectueux de l&apos;environnement et de votre peau.</p>
             </div>
           </div>
           <hr className="my-[2vw] border-t border-white/30" />
