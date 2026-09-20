@@ -128,3 +128,39 @@
     @apply font-sans;
   }
 }
+/* ── Card Fan Carousel ─────────────────────────────────────────────────── */
+.fan-layout {
+  height: 38rem;
+}
+
+.fan-card {
+  position: absolute;
+  width: 14rem;
+  height: 21rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.25), 0 4px 16px -4px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.fan-card:hover {
+  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.35), 0 8px 24px -4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1023px) {
+  .fan-layout { height: 34rem; }
+  .fan-card { width: 12rem; height: 18rem; border-radius: 0.8rem; }
+}
+@media (max-width: 767px) {
+  .fan-layout { height: 28rem; }
+  .fan-card { width: 9rem; height: 13.5rem; border-radius: 0.6rem; }
+}
+@media (max-width: 639px) {
+  .fan-layout { height: 26rem; }
+  .fan-card { width: 8rem; height: 12rem; border-radius: 0.5rem; }
+}
+@media (max-width: 479px) {
+  .fan-layout { height: 22rem; }
+  .fan-card { width: 6.5rem; height: 9.5rem; border-radius: 0.4rem; }
+}
