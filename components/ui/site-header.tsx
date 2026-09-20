@@ -55,11 +55,10 @@ export default function SiteHeader() {
           />
         </svg>
         <span className="text-lg font-black tracking-tight text-foreground leading-none transition-opacity group-hover:opacity-80">
-          ZENITH<span className="font-light opacity-60 ml-[2px] text-base">wellness</span>
+          ZENITH<span className="font-light opacity-60 ml-0.5 text-base">wellness</span>
         </span>
       </Link>
 
-      {/* Navigation centrale desktop */}
       <nav
         className="hidden md:flex items-center gap-8"
         aria-label="Navigation principale"
@@ -72,8 +71,7 @@ export default function SiteHeader() {
               "relative text-sm font-medium tracking-wide",
               "text-foreground/60 hover:text-foreground",
               "transition-colors duration-200",
-              // underline anime : barre qui pousse de gauche vers droite au hover
-              "after:absolute after:bottom-[-3px] after:left-0",
+              "after:absolute after:-bottom-0.75 after:left-0",
               "after:h-[1.5px] after:w-full after:rounded-full after:bg-foreground",
               "after:origin-left after:scale-x-0",
               "after:transition-transform after:duration-300 after:ease-out",
@@ -85,7 +83,6 @@ export default function SiteHeader() {
         ))}
       </nav>
 
-      {/* CTA Reserver desktop — meme style glassmorphism que les boutons du footer */}
       <a
         href="#contact"
         className={[
@@ -116,7 +113,7 @@ export default function SiteHeader() {
       {/* Burger mobile */}
       <button
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        className="md:hidden flex flex-col justify-center gap-[5px] p-2.5 rounded-xl text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+        className="md:hidden flex flex-col justify-center gap-1.25 p-2.5 rounded-xl text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
         aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-nav-menu"
@@ -133,7 +130,7 @@ export default function SiteHeader() {
         />
         <span
           className={`h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 origin-center ${
-            isMobileMenuOpen ? "w-5 -translate-y-[6.5px] -rotate-45" : "w-3 ml-auto"
+            isMobileMenuOpen ? "w-5 translate-y-[-6.5px] -rotate-45" : "w-3 ml-auto"
           }`}
         />
       </button>

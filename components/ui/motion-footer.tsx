@@ -263,8 +263,6 @@ export function CinematicFooter() {
         className="relative min-h-screen md:h-screen w-full"
         style={{
           clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
-          // transform crée un nouveau containing block pour les enfants fixed,
-          // ce qui permet au clip-path de les couper correctement
           transform: "translateZ(0)",
           willChange: "transform",
         }}
@@ -275,7 +273,7 @@ export function CinematicFooter() {
 
           <div
             ref={giantTextRef}
-            className="footer-giant-bg-text absolute -bottom-[2vh] md:-bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
+            className="footer-giant-bg-text absolute bottom-[-2vh] md:bottom-[-5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
             ZENITH
           </div>

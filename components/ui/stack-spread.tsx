@@ -1,5 +1,3 @@
-// Built using Hyperiux Vault: https://vault.hyperiux.com
-
 "use client";
 
 import {
@@ -13,6 +11,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const IMG = {
   yoga: "/images/wellness/img1.jpg",
@@ -25,7 +24,6 @@ const IMG = {
   fitness: "/images/wellness/img8.jpg",
 } as const;
 
-// per-image rest scale, keyed by img index (1-8). default 1, drop below to shrink.
 const SCALE: Partial<Record<number, number>> = {
   1: 0.9,
   2: 0.8,
@@ -38,7 +36,6 @@ const SCALE: Partial<Record<number, number>> = {
 };
 const s = (i: number) => SCALE[i] ?? 1;
 
-// array order = stack order, back (z 2) -> front (z 9)
 const CARDS: StackSpreadCard[] = [
   {
     item: { src: IMG.fitness, alt: "Fitness et sport" },
@@ -106,9 +103,8 @@ const CARDS: StackSpreadCard[] = [
   },
 ];
 
-// ---------------------------------------------------------------------------
+
 // Mechanism
-// ---------------------------------------------------------------------------
 
 const SCATTER_START = 0.12;
 const SCATTER_END = 0.9;
@@ -295,11 +291,13 @@ function CardFace({
       className="relative h-full w-full overflow-hidden max-md:rounded-[4vw]"
       style={{ borderRadius: cardRadius + "px" }}
     >
-      <img
+      <Image
         src={item.src}
         alt={item.alt ?? ""}
+        fill
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover"
+        sizes="(max-width: 768px) 80vw, 400px"
+        className="object-cover"
       />
     </div>
   );
@@ -374,7 +372,7 @@ function StackSpreadStage({
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* centre text */}
         <motion.div
-          className="pointer-events-none absolute inset-0 z-[5] flex flex-col items-center justify-center px-6 text-center max-md:px-8"
+          className="pointer-events-none absolute inset-0 z-5 flex flex-col items-center justify-center px-6 text-center max-md:px-8"
           style={{
             opacity: copyOpacity,
             scale: noScale ? 1 : copyScale,

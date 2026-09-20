@@ -8,12 +8,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/**
- * Wrapper qui anime ses enfants a l'entree dans le viewport.
- * - Le label (eyebrow) glisse depuis la gauche
- * - Le titre se revele ligne par ligne avec un masque
- * - Le sous-titre fait un fade-up decale
- */
 export default function SectionReveal({ children }: { children: React.ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null);
 

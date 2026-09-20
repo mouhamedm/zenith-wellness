@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
 export interface CardItem {
@@ -271,24 +272,30 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   if (!totalCards) return null;
 
   const chevron = (direction: "left" | "right") => (
-    <svg className="relative z-[2] w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="relative z-2 w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <polyline points={direction === "left" ? "15 18 9 12 15 6" : "9 18 15 12 9 6"} />
     </svg>
   );
 
   return (
     <section className="flex flex-col items-center w-full py-4 lg:py-8 px-4 md:px-8 relative z-20">
-      <div className="flex items-center justify-center w-full max-w-[90rem]">
+      <div className="flex items-center justify-center w-full max-w-360">
         <div
           ref={containerRef}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="fan-layout flex relative justify-center items-center w-full max-w-[80rem] select-none"
+          className="fan-layout flex relative justify-center items-center w-full max-w-7xl select-none"
         >
           {cards.map((card, index) => {
             const image = (
               <div className="relative w-full h-full overflow-hidden">
-                <img src={card.imgUrl} loading="lazy" alt={card.alt || "Card " + index} className="absolute inset-0 w-full h-full object-cover z-10" />
+                <Image
+                  src={card.imgUrl}
+                  alt={card.alt || "Card " + index}
+                  fill
+                  sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 260px"
+                  className="object-cover z-10"
+                />
               </div>
             );
             return card.linkUrl ? (
