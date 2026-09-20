@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -9,6 +10,8 @@ const NAV_LINKS = [
 ];
 
 export default function SiteHeader() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="w-full px-6 md:px-12 py-5 flex items-center justify-between bg-transparent absolute top-0 left-0 z-50">
       {/* Logo */}
@@ -56,7 +59,7 @@ export default function SiteHeader() {
         </span>
       </Link>
 
-      {/* Navigation centrale */}
+      {/* Navigation centrale desktop */}
       <nav
         className="hidden md:flex items-center gap-8"
         aria-label="Navigation principale"
@@ -82,7 +85,7 @@ export default function SiteHeader() {
         ))}
       </nav>
 
-      {/* CTA Reserver — meme style glassmorphism que les boutons du footer */}
+      {/* CTA Reserver desktop — meme style glassmorphism que les boutons du footer */}
       <a
         href="#contact"
         className={[
@@ -112,13 +115,74 @@ export default function SiteHeader() {
 
       {/* Burger mobile */}
       <button
-        className="md:hidden flex flex-col gap-[5px] p-2 group"
-        aria-label="Ouvrir le menu"
+        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        className="md:hidden flex flex-col justify-center gap-[5px] p-2.5 rounded-xl text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+        aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="mobile-nav-menu"
       >
-        <span className="w-5 h-[1.5px] bg-foreground/70 rounded-full transition-all duration-300 group-hover:w-4" />
-        <span className="w-5 h-[1.5px] bg-foreground/70 rounded-full transition-all duration-300" />
-        <span className="w-3 h-[1.5px] bg-foreground/70 rounded-full transition-all duration-300 ml-auto group-hover:w-5" />
+        <span
+          className={`h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 origin-center ${
+            isMobileMenuOpen ? "w-5 translate-y-[6.5px] rotate-45" : "w-5"
+          }`}
+        />
+        <span
+          className={`w-5 h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 ${
+            isMobileMenuOpen ? "opacity-0 scale-0" : "opacity-100"
+          }`}
+        />
+        <span
+          className={`h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 origin-center ${
+            isMobileMenuOpen ? "w-5 -translate-y-[6.5px] -rotate-45" : "w-3 ml-auto"
+          }`}
+        />
       </button>
+
+      {/* Menu mobile déroulant */}
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-nav-menu"
+          className="md:hidden absolute top-full left-0 w-full px-4 pt-2 pb-4 transition-all duration-300"
+        >
+          <div className="bg-[#f5f3ef]/95 dark:bg-[#141414]/95 backdrop-blur-2xl border border-foreground/10 rounded-2xl p-5 shadow-2xl flex flex-col gap-3 animate-in fade-in slide-in-from-top-3 duration-200">
+            <nav className="flex flex-col gap-1" aria-label="Navigation mobile">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-base font-medium text-foreground/80 hover:text-foreground py-2.5 px-3 rounded-xl hover:bg-foreground/5 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <hr className="border-t border-foreground/10 my-1" />
+
+            <a
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="glass-pill-btn flex items-center justify-center gap-2 w-full py-3 rounded-full text-sm font-semibold text-center"
+            >
+              <span>Reserver une seance</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -258,8 +258,9 @@ export function CinematicFooter() {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div
+        id="contact"
         ref={wrapperRef}
-        className="relative h-screen w-full"
+        className="relative min-h-screen md:h-screen w-full"
         style={{
           clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
           // transform crée un nouveau containing block pour les enfants fixed,
@@ -268,43 +269,43 @@ export function CinematicFooter() {
           willChange: "transform",
         }}
       >
-        <footer className="absolute inset-0 flex h-full w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper">
+        <footer className="relative md:absolute inset-0 flex min-h-screen md:h-full w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper pt-12 pb-6 md:pt-0 md:pb-0">
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
           <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
 
           <div
             ref={giantTextRef}
-            className="footer-giant-bg-text absolute -bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
+            className="footer-giant-bg-text absolute -bottom-[2vh] md:-bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
             ZENITH
           </div>
 
-          <div className="absolute top-12 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
+          <div className="absolute top-4 md:top-12 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-2.5 md:py-4 z-10 -rotate-2 scale-110 shadow-2xl">
             <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-[0.3em] text-muted-foreground uppercase">
               <MarqueeItem />
               <MarqueeItem />
             </div>
           </div>
 
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 md:px-6 mt-16 md:mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-12 text-center"
+              className="text-3xl sm:text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-8 md:mb-12 text-center"
             >
               Commencer votre voyage ?
             </h2>
 
-            <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
-                  <svg className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div ref={linksRef} className="flex flex-col items-center gap-4 md:gap-6 w-full">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full">
+                <MagneticButton as="a" href="#contact" className="footer-glass-pill px-6 py-3.5 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-full text-foreground font-bold text-xs sm:text-sm md:text-base flex items-center gap-2.5 md:gap-3 group">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12 19.79 19.79 0 0 1 1.21 3.18 2 2 0 0 1 3.22 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                   Nous contacter
                 </MagneticButton>
 
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group">
-                  <svg className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <MagneticButton as="a" href="#contact" className="footer-glass-pill px-6 py-3.5 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-full text-foreground font-bold text-xs sm:text-sm md:text-base flex items-center gap-2.5 md:gap-3 group">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                     <line x1="16" y1="2" x2="16" y2="6" />
                     <line x1="8" y1="2" x2="8" y2="6" />
@@ -314,37 +315,37 @@ export function CinematicFooter() {
                 </MagneticButton>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+              <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 md:gap-6 w-full mt-1 md:mt-2">
+                <MagneticButton as="a" href="#soins" className="footer-glass-pill px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-muted-foreground font-medium text-[11px] sm:text-xs md:text-sm hover:text-foreground">
                   Nos services
                 </MagneticButton>
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="#espaces" className="footer-glass-pill px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-muted-foreground font-medium text-[11px] sm:text-xs md:text-sm hover:text-foreground">
                   Confidentialite
                 </MagneticButton>
-                <MagneticButton as="a" href="#" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="#histoire" className="footer-glass-pill px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-muted-foreground font-medium text-[11px] sm:text-xs md:text-sm hover:text-foreground">
                   Mentions legales
                 </MagneticButton>
               </div>
             </div>
           </div>
 
-          <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
+          <div className="relative z-20 w-full pb-6 md:pb-8 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+            <div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1 text-center md:text-left">
               &copy; {new Date().getFullYear()} Centre Zenith Bien-etre. Tous droits reserves.
             </div>
 
-            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-border/50">
+            <div className="footer-glass-pill px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-border/50">
               <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Developpe par</span>
-              <span className="animate-footer-heartbeat text-sm md:text-base text-destructive">❤</span>
+              <span className="animate-footer-heartbeat text-xs md:text-base text-destructive">❤</span>
               <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">MMD.Dev</span>
             </div>
 
             <MagneticButton
               as="button"
               onClick={scrollToTop}
-              className="w-12 h-12 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-3"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-3"
             >
-              <svg className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
               </svg>
             </MagneticButton>

@@ -15,8 +15,8 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Uniquement sur les peripheriques a pointeur (souris / trackpad)
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    // Uniquement sur les peripheriques a pointeur (souris / trackpad) et ecrans desktop (>= 768px)
+    if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
     const dot  = dotRef.current;
     const ring = ringRef.current;
@@ -119,10 +119,10 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Anneau externe — suit avec retard */}
+      {/* Anneau externe — suit avec retard (desktop uniquement) */}
       <div
         ref={ringRef}
-        className="cursor-ring"
+        className="cursor-ring hidden md:block"
         style={{
           width: 36,
           height: 36,
@@ -133,10 +133,10 @@ export default function CustomCursor() {
         }}
         aria-hidden="true"
       />
-      {/* Point central — suit instantanement */}
+      {/* Point central — suit instantanement (desktop uniquement) */}
       <div
         ref={dotRef}
-        className="cursor-dot"
+        className="cursor-dot hidden md:block"
         style={{
           width: 7,
           height: 7,

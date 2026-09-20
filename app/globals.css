@@ -215,14 +215,24 @@
   will-change: transform;
 }
 
-/* Masque le curseur natif quand le custom cursor est actif */
-body.custom-cursor-active {
-  cursor: none !important;
+/* Masque le curseur natif quand le custom cursor est actif (desktop uniquement) */
+@media (min-width: 768px) and (pointer: fine) {
+  body.custom-cursor-active {
+    cursor: none !important;
+  }
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active input,
+  body.custom-cursor-active label {
+    cursor: none !important;
+  }
 }
-body.custom-cursor-active a,
-body.custom-cursor-active button,
-body.custom-cursor-active [role="button"],
-body.custom-cursor-active input,
-body.custom-cursor-active label {
-  cursor: none !important;
+
+@media (max-width: 767px), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
 }
+

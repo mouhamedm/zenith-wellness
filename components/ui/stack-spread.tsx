@@ -140,7 +140,7 @@ const RESPONSIVE = {
 function useResponsive() {
   const [r, setR] = useState(RESPONSIVE.desktop);
   useEffect(() => {
-    const mq = window.matchMedia("(pointer: coarse)");
+    const mq = window.matchMedia("(max-width: 767px), (pointer: coarse)");
     const read = () =>
       setR(mq.matches ? RESPONSIVE.small : RESPONSIVE.desktop);
     read();
