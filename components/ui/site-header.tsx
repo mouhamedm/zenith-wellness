@@ -113,7 +113,7 @@ export default function SiteHeader() {
       {/* Burger mobile */}
       <button
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        className="md:hidden flex flex-col justify-center gap-1.25 p-2.5 rounded-xl text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+        className="md:hidden flex flex-col justify-center items-center gap-1.25 p-2.5 rounded-xl text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
         aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-nav-menu"
@@ -124,13 +124,13 @@ export default function SiteHeader() {
           }`}
         />
         <span
-          className={`w-5 h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 ${
+          className={`w-4 h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 ${
             isMobileMenuOpen ? "opacity-0 scale-0" : "opacity-100"
           }`}
         />
         <span
           className={`h-[1.5px] bg-foreground/80 rounded-full transition-all duration-300 origin-center ${
-            isMobileMenuOpen ? "w-5 translate-y-[-6.5px] -rotate-45" : "w-3 ml-auto"
+            isMobileMenuOpen ? "w-5 translate-y-[-6.5px] -rotate-45" : "w-3"
           }`}
         />
       </button>
